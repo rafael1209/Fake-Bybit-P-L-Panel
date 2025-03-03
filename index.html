@@ -104,10 +104,14 @@
     const percentDisplay = document.getElementById('percentDisplay');
     const shortDisplay = document.getElementById('shortDisplay');
     const longDisplay = document.getElementById('longDisplay');
+    const entryDisplay = document.getElementById('entryDisplay');
+    const filledDisplay = document.getElementById('filledDisplay');
 
     const symbol = getUrlParameter('symbol');
     const percent = getUrlParameter('percent');
     const positionType = getUrlParameter('position');
+    const entry = getUrlParameter('entry');
+    const filled = getUrlParameter('filled');
 
     if (symbol) {
         symbolDisplay.textContent = symbol;
@@ -116,6 +120,8 @@
     }
 
     percentDisplay.textContent = SetPercent(percent);
+    entryDisplay.textContent = entry;
+    filledDisplay.textContent = filled;
 
     if (positionType === 'short') {
         shortDisplay.style.display = 'block';
