@@ -26,12 +26,9 @@
                                                     </div>
                                                     <div class="jmikgkle2ftv0dfe5yBl">
                                                         <div class="_aXuLb3P7TjF_0yTyqJQ">
-                                                            <div class="QQDRqnKS3NxhLf5_ykRK" id="symbolDisplay">
-                                                                JELLYJELLYUSDT
-                                                            </div>
-                                                            <div class="ANg9hiHID7v4R0ILwGq3 saQlBd86G13I5GpQapTE">
-                                                                Short 10x
-                                                            </div>
+                                                            <div class="QQDRqnKS3NxhLf5_ykRK" id="symbolDisplay">JELLYJELLYUSDT</div>
+                                                            <div class="ANg9hiHID7v4R0ILwGq3 saQlBd86G13I5GpQapTE" id="shortDisplay">Short 10x</div>
+                                                            <div class="ANg9hiHID7v4R0ILwGq3 CYqvdY0COTWJJri8oD2E" id="longDisplay">Long 10x</div>
                                                         </div>
                                                         <div class="m5rqXZdGPsvDhFE4Gjrw">
                                                             ROI
@@ -105,13 +102,12 @@
 
     const symbolDisplay = document.getElementById('symbolDisplay');
     const percentDisplay = document.getElementById('percentDisplay');
-    const entryDisplay = document.getElementById('entryDisplay');
-    const filledDisplay = document.getElementById('filledDisplay');
+    const shortDisplay = document.getElementById('shortDisplay');
+    const longDisplay = document.getElementById('longDisplay');
 
     const symbol = getUrlParameter('symbol');
     const percent = getUrlParameter('percent');
-    const entry = getUrlParameter('entry');
-    const filled = getUrlParameter('filled');
+    const positionType = getUrlParameter('position');
 
     if (symbol) {
         symbolDisplay.textContent = symbol;
@@ -120,8 +116,17 @@
     }
 
     percentDisplay.textContent = SetPercent(percent);
-    entryDisplay.textContent = entry;
-    filledDisplay.textContent = filled;
+
+    if (positionType === 'short') {
+        shortDisplay.style.display = 'block';
+        longDisplay.style.display = 'none';
+    } else if (positionType === 'long') {
+        longDisplay.style.display = 'block';
+        shortDisplay.style.display = 'none';
+    } else {
+        shortDisplay.style.display = 'none';
+        longDisplay.style.display = 'none';
+    }
 </script>
 <style>
     html {
